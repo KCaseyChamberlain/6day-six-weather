@@ -67,7 +67,10 @@ $.ajax({
     method: "GET", 
 }).then(function (response){
     console.log(response)
-    console.log(response.daily.0.weather.icon)
+
+    console.log(response.daily[0].weather[0].icon)
+    var currentIcon = response.daily[0].weather[0].icon;
+    getCurrentWeatherIcon(currentIcon)
 })
 }
 // END OF FORECAST WEATHER FUNCTION
@@ -81,8 +84,13 @@ var getCurrentCityName = function (currentCityName) {
 }
 // END OF GET CURRENT CITY NAME
 
+// START OF GET CURRENT WEATHER ICON
+var getCurrentWeatherIcon =  function (currentIcon){
+    var currentWeatherIcon = document.querySelector("#current-weather-icon");
+    $(currentWeatherIcon).addClass("currentIcon");
+}
 
-
+// END OF GET CURRENT WEATHER ICON
 
 
 
