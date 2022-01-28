@@ -1,6 +1,13 @@
 var userFormEl = document.querySelector("#user-form");
 var cityInputEl = document.querySelector("#city");
 
+// uses moment to get the current time and displays it in the header
+var currentTime = function () {
+    timeEL = document.querySelector('#current-weather-date')
+    timeEL.innerHTML = moment().format('MMMM Do');
+}
+setInterval(currentTime, 1000);
+// END OF TIMER FUNCTION
 
 var formSubmitHandler = function (event) {
     // prevent page from refreshing
@@ -11,7 +18,6 @@ var formSubmitHandler = function (event) {
 
     if (city) {
         getCurrentWeather(city);
-
 
         // clear old content
         cityInputEl.value = "";
@@ -34,14 +40,19 @@ $.ajax({
     method: "GET", 
 }).then(function (response){
     console.log(response);
+
     var longitude = response.coord.lon;
     var latitude = response.coord.lat;
     getForecastWeather(longitude, latitude);
+
+    console.log(response.name)
+    var currentCityName = response.name;
+    getCurrentCityName(currentCityName)
 })
 }
 // END OF CURRENT WEATHER FUNCTION
 
-  
+
 
 
 // START OF FORECAST WEATHER FUNCTION
@@ -56,9 +67,33 @@ $.ajax({
     method: "GET", 
 }).then(function (response){
     console.log(response)
+    console.log(response.daily.0.weather.icon)
 })
 }
 // END OF FORECAST WEATHER FUNCTION
+
+
+
+// START OF GET CURRENT CITY NAME
+var getCurrentCityName = function (currentCityName) {
+    var currentWeatherCityName = document.querySelector("#current-weather-city-name");
+    $(currentWeatherCityName).replaceWith(currentCityName);
+}
+// END OF GET CURRENT CITY NAME
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -77,46 +112,6 @@ userFormEl.addEventListener("submit", formSubmitHandler);
 
 
 
-
-    // make a get request to url
-//     fetch(apiUrl)
-//         .then(function (response) {
-//             // request was successful
-//             if (response.ok) {
-//                 console.log(response);
-//                 response.json().then(function (data) {
-//                     console.log(data);
-//                     displayRepos(data, city);
-//                 });
-//             } else {
-//                 alert("Error: " + response.statusText);
-//             }
-//         })
-//         .catch(function (error) {
-//             alert("Unable to connect to GitHub");
-//         });
-// };
-// END OF CURRENT WEATHER FUNCTION
-
-
-
-// api.openweathermap.org/data/2.5/weather?q=draper&appid=1943adda1f7996b352d3f817945f8c54
-
-// var getCurrentWeather = function () {
-//     const settings = {
-//         "async": true,
-//         "crossDomain": true,
-//         "url": "https://community-open-weather-map.p.rapidapi.com/weather?q=London%2Cuk&lat=0&lon=0&callback=test&id=2172797&lang=null&units=imperial&mode=xml",
-//         "method": "GET",
-//         "headers": {
-//             "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-//             "x-rapidapi-key": "933080ba96mshccf83a9f1a3bb02p17725ajsn4157f19eeff5"
-//         }
-//     };
-    
-//     $.ajax(settings).done(function (response) {
-//         console.log(response);
-//     });
 
 
 
