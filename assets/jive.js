@@ -12,7 +12,6 @@ var formSubmitHandler = function (event) {
 
     if (city) {
         getCurrentWeather(city);
-        getForecastWeather(city);
 
 
         // clear old content
@@ -36,7 +35,12 @@ $.ajax({
     url: apiURL,
     method: "GET", 
 }).then(function (response){
-    console.log(response)
+    console.log(response);
+    console.log(response.coord.lon);
+    console.log(response.coord.lat);
+    var longitude = response.coord.lon;
+    var latitude = response.coord.lat;
+    getForecastWeather(city);
 })
 }
 // END OF CURRENT WEATHER FUNCTION
@@ -48,7 +52,8 @@ $.ajax({
 var getForecastWeather = function (city) {
 
     // format the openweathermap forecast api url
-    var apiURL = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&cnt=6&appid=1943adda1f7996b352d3f817945f8c54"
+    https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+    var apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=51.5085&lon=-0.1257&exclude=minutely,hourly,&appid=1943adda1f7996b352d3f817945f8c54";
     console.log(apiURL);
 
 $.ajax({
