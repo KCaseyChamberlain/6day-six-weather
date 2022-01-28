@@ -12,6 +12,7 @@ var formSubmitHandler = function (event) {
 
     if (city) {
         getCurrentWeather(city);
+        getForecastWeather(city);
 
 
         // clear old content
@@ -21,6 +22,7 @@ var formSubmitHandler = function (event) {
         alert("Please enter a city name!");
     }
 };
+
 
 // START OF CURRENT WEATHER FUNCTION
 var getCurrentWeather = function (city) {
@@ -37,6 +39,29 @@ $.ajax({
     console.log(response)
 })
 }
+// END OF CURRENT WEATHER FUNCTION
+
+
+
+
+// START OF FORECAST WEATHER FUNCTION
+var getForecastWeather = function (city) {
+
+    // format the openweathermap forecast api url
+    var apiURL = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&cnt=6&appid=1943adda1f7996b352d3f817945f8c54"
+    console.log(apiURL);
+
+$.ajax({
+    url: apiURL,
+    method: "GET", 
+}).then(function (response){
+    console.log(response)
+})
+}
+// END OF FORECAST WEATHER FUNCTION
+
+
+
 
 
 // click event
