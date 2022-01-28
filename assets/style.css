@@ -2,6 +2,14 @@
     padding: 10px
 }
 
+header{
+    border-bottom: dotted;
+}
+
+#weather-block h3 {
+    background-color: gainsboro;
+}
+
 .card-header{
     background-color: #a7d3db;
 }

@@ -1,6 +1,5 @@
 var userFormEl = document.querySelector("#user-form");
 var cityInputEl = document.querySelector("#city");
-var currentWeatherContainerEl = document.querySelector("#current-weather-container");
 
 
 var formSubmitHandler = function (event) {
@@ -15,7 +14,6 @@ var formSubmitHandler = function (event) {
 
 
         // clear old content
-        currentWeatherContainerEl.textContent = "";
         cityInputEl.value = "";
     } else {
         alert("Please enter a city name!");
@@ -43,7 +41,7 @@ $.ajax({
 }
 // END OF CURRENT WEATHER FUNCTION
 
-
+  
 
 
 // START OF FORECAST WEATHER FUNCTION
