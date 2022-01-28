@@ -36,11 +36,9 @@ $.ajax({
     method: "GET", 
 }).then(function (response){
     console.log(response);
-    console.log(response.coord.lon);
-    console.log(response.coord.lat);
     var longitude = response.coord.lon;
     var latitude = response.coord.lat;
-    getForecastWeather(city);
+    getForecastWeather(longitude, latitude);
 })
 }
 // END OF CURRENT WEATHER FUNCTION
@@ -49,11 +47,10 @@ $.ajax({
 
 
 // START OF FORECAST WEATHER FUNCTION
-var getForecastWeather = function (city) {
+var getForecastWeather = function (longitude, latitude) {
 
     // format the openweathermap forecast api url
-    https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-    var apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=51.5085&lon=-0.1257&exclude=minutely,hourly,&appid=1943adda1f7996b352d3f817945f8c54";
+    var apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=minutely,hourly,&appid=1943adda1f7996b352d3f817945f8c54";
     console.log(apiURL);
 
 $.ajax({
