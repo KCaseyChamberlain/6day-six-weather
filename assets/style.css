@@ -1,3 +1,39 @@
 *{
     padding: 10px
 }
+
+.card-header{
+    background-color: #a7d3db;
+}
+
+#search-block {
+    background-color: grey;
+}
+
+.btn {
+    background-color: grey;
+}
+
+.forecast-weather {
+    background-color: aqua;
+}
+
+.current-weather {
+    background-color: aquamarine;
+    border-bottom: solid;
+}
+
+.forecast-days {
+    background-color: #a7d3db;
+    border: dashed;
+}
+
+.forecast-block {
+    justify-content: space-evenly;
+}
+
+.btn:hover{
+    font-size: 115%;
+    transition: all .3s ease-in-out;
+    opacity: .8;
+}

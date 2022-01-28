@@ -36,10 +36,9 @@
                     <form id="user-form" class="card-body">
                         <label class="form-label" for="city">City:</label>
                         <input name="city" id="city" type="text" autofocus="true" class="form-input col-12" />
-                        <button type="submit" class="btn">Find Forcast</button>
+                        <button type="submit" class="btn">Search Weather</button>
                     </form>
                 </div>
-
 
 
                 <div class="search-history">
@@ -47,41 +46,43 @@
                 </div>
             </article>
 
-            <article id="weather-block2" class="col-9 text-center">
+
+
+            <article id="weather-block" class="col-9 text-center">
                 <h3>
                     WEATHER BLOCKS
                 </h3>
 
-                <section class="weather-now">
-                    <h4 class="subtitle">
-                        SHOWING CURRENT WEATHER:
-                        <span id="repo-search-term"></span>
-                    </h4>
-                    <div id="current-weather-container" class="list-group">
+                <section class="current-weather row">
+                    <div class="col-12">
+                        <h4 class="subtitle">
+                            SHOWING CURRENT WEATHER:
+                            <span id="repo-search-term"></span>
+                        </h4>
+                        <div id="current-weather-container" class="list-group">
 
+                        </div>
                     </div>
-
-
                 </section>
 
 
-                <section class="weather-plus-five row">
+                <section class="forecast-weather row">
                     <div class="col-12">
                         <h4>SHOWING WEATHER +5 DAYS:</h4>
-                        <div class="row justify-content-center">
-                            <div class="col-2">
+                        <div class="row justify-content-center forecast-block">
+                            <div class="forecast-days col-2">
                                 Tomorrow
                             </div>
-                            <div class="col-2">
+                            <div class="forecast-days col-2">
                                 2 days
                             </div>
-                            <div class="col-2">
+                            <div class="forecast-days col-2">
                                 3 days
                             </div>
-                            <div class="col-2">
+                            <div class="forecast-days col-2">
                                 4 days
                             </div>
-                            <div class="col-2">
+                            <div class="forecast-days col-2">
                                 5 days
                             </div>
                         </div>

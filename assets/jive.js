@@ -11,7 +11,8 @@ var formSubmitHandler = function (event) {
     var city = cityInputEl.value.trim();
 
     if (city) {
-        getCityWeather(city);
+        getCurrentWeather(city);
+
 
         // clear old content
         currentWeatherContainerEl.textContent = "";
@@ -21,33 +22,83 @@ var formSubmitHandler = function (event) {
     }
 };
 
+// START OF CURRENT WEATHER FUNCTION
+var getCurrentWeather = function (city) {
 
+    // format the openweathermap current api url
+    
+    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=1943adda1f7996b352d3f817945f8c54";
+    console.log(apiURL);
 
-var getCityWeather = function (user) {
-    // format the github api url
-    var apiUrl = "https://api.github.com/users/" + user + "/repos";
-
-    // make a get request to url
-    fetch(apiUrl)
-        .then(function (response) {
-            // request was successful
-            if (response.ok) {
-                console.log(response);
-                response.json().then(function (data) {
-                    console.log(data);
-                    displayRepos(data, user);
-                });
-            } else {
-                alert("Error: " + response.statusText);
-            }
-        })
-        .catch(function (error) {
-            alert("Unable to connect to GitHub");
-        });
-};
-
-
+$.ajax({
+    url: apiURL,
+    method: "GET", 
+}).then(function (response){
+    console.log(response)
+})
+}
 
 
 // click event
 userFormEl.addEventListener("submit", formSubmitHandler);
+
+
+
+
+
+
+
+
+
+
+
+
+    // make a get request to url
+//     fetch(apiUrl)
+//         .then(function (response) {
+//             // request was successful
+//             if (response.ok) {
+//                 console.log(response);
+//                 response.json().then(function (data) {
+//                     console.log(data);
+//                     displayRepos(data, city);
+//                 });
+//             } else {
+//                 alert("Error: " + response.statusText);
+//             }
+//         })
+//         .catch(function (error) {
+//             alert("Unable to connect to GitHub");
+//         });
+// };
+// END OF CURRENT WEATHER FUNCTION
+
+
+
+// api.openweathermap.org/data/2.5/weather?q=draper&appid=1943adda1f7996b352d3f817945f8c54
+
+// var getCurrentWeather = function () {
+//     const settings = {
+//         "async": true,
+//         "crossDomain": true,
+//         "url": "https://community-open-weather-map.p.rapidapi.com/weather?q=London%2Cuk&lat=0&lon=0&callback=test&id=2172797&lang=null&units=imperial&mode=xml",
+//         "method": "GET",
+//         "headers": {
+//             "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
+//             "x-rapidapi-key": "933080ba96mshccf83a9f1a3bb02p17725ajsn4157f19eeff5"
+//         }
+//     };
+    
+//     $.ajax(settings).done(function (response) {
+//         console.log(response);
+//     });
+
+
+
+
+
+
+
+
+
+
