@@ -225,13 +225,15 @@ var getCurrentWeatherIcon =  function (currentIcon){
 // START OF GET CURRENT WEATHER TEMP
 var getCurrentWeatherTemp = function (currentTemp) {
     var currentWeatherTemp = document.querySelector("#current-weather-temp");
-    $(currentWeatherTemp).append(currentTemp)
+    $(currentWeatherTemp).empty();
+    $(currentWeatherTemp).append("Temp: " + currentTemp)
 }
 
 // START OF CURRENT WEATHER HUMIDITY
 var getCurrentWeatherHumidity = function (currentHumidity){
     var currentWeatherHumidity = document.querySelector("#current-weather-humidity");
-    $(currentWeatherHumidity).append(currentHumidity);
+    $(currentWeatherHumidity).empty();
+    $(currentWeatherHumidity).append("Humidity: " + currentHumidity);
 }
 
 
@@ -239,13 +241,15 @@ var getCurrentWeatherHumidity = function (currentHumidity){
 // START OF CURRENT WEATHER WIND SPEED
 var getCurrentWeatherWindSpeed = function (currentWindSpeed) {
     var currentWeatherWindSpeed = document.querySelector("#current-weather-wind-speed");
-    $(currentWeatherWindSpeed).append(currentWindSpeed);
+    $(currentWeatherWindSpeed).empty();
+    $(currentWeatherWindSpeed).append("Wind Speed: " + currentWindSpeed);
 }
 
 // START OF CURRENT UVI
 var getCurrentWeatherUvi = function (currentUvi) {
     var currentWeatherUvi = document.querySelector("#current-weather-uvi");
-    $(currentWeatherUvi).append(currentUvi);
+    $(currentWeatherUvi).empty();
+    $(currentWeatherUvi).append("UV Index: " + currentUvi);
     if (currentUvi < 3) {
         currentWeatherUvi.style.backgroundColor = "#1db546";
     }
@@ -288,20 +292,21 @@ var getTomorrowWeatherIcon =  function (tomorrowIcon){
 // START OF GET TOMORROW WEATHER TEMP
 var getTomorrowWeatherTemp = function (tomorrowTemp) {
     var tomorrowWeatherTemp = document.querySelector("#tomorrow-weather-temp");
-    $(tomorrowWeatherTemp).append(tomorrowTemp)
+    $(tomorrowWeatherTemp).empty();
+    $(tomorrowWeatherTemp).append("Temp: " + tomorrowTemp);
 }
 
 // START OF TOMORROW WEATHER HUMIDITY
 var getTomorrowWeatherHumidity = function (tomorrowHumidity){
     var tomorrowWeatherHumidity = document.querySelector("#tomorrow-weather-humidity");
-    $(tomorrowWeatherHumidity).append(tomorrowHumidity);
-}
+    $(tomorrowWeatherHumidity).empty();
+    $(tomorrowWeatherHumidity).append("Humidity: " + tomorrowHumidity);}
 
 // START OF TOMORROW WEATHER WIND SPEED
 var getTomorrowWeatherWindSpeed = function (tomorrowWindSpeed) {
     var tomorrowWeatherWindSpeed = document.querySelector("#tomorrow-weather-wind-speed");
-    $(tomorrowWeatherWindSpeed).append(tomorrowWindSpeed);
-}
+    $(tomorrowWeatherWindSpeed).empty();
+    $(tomorrowWeatherWindSpeed).append("Wind Speed: " + tomorrowWindSpeed);}
 
 
 
@@ -328,19 +333,22 @@ var getTwoDaysOutWeatherIcon =  function (twoDaysOutIcon){
 // START OF GET TWO-days-out WEATHER TEMP
 var getTwoDaysOutWeatherTemp = function (twoDaysOutTemp) {
     var twoDaysOutWeatherTemp = document.querySelector("#two-days-out-weather-temp");
-    $(twoDaysOutWeatherTemp).append(twoDaysOutTemp)
+    $(twoDaysOutWeatherTemp).empty();
+    $(twoDaysOutWeatherTemp).append("Temp: " + twoDaysOutTemp);
 }
 
 // START OF TWO-days-out WEATHER HUMIDITY
 var getTwoDaysOutWeatherHumidity = function (twoDaysOutHumidity){
     var twoDaysOutWeatherHumidity = document.querySelector("#two-days-out-weather-humidity");
-    $(twoDaysOutWeatherHumidity).append(twoDaysOutHumidity);
+    $(twoDaysOutWeatherHumidity).empty();
+    $(twoDaysOutWeatherHumidity).append("Humidity: " + twoDaysOutHumidity);
 }
 
 // START OF TWO-days-out WEATHER WIND SPEED
 var getTwoDaysOutWeatherWindSpeed = function (twoDaysOutWindSpeed) {
     var twoDaysOutWeatherWindSpeed = document.querySelector("#two-days-out-weather-wind-speed");
-    $(twoDaysOutWeatherWindSpeed).append(twoDaysOutWindSpeed);
+    $(twoDaysOutWeatherWindSpeed).empty();
+    $(twoDaysOutWeatherWindSpeed).append("Wind Speed: " + twoDaysOutWindSpeed);
 }
 
 
@@ -369,19 +377,22 @@ var getThreeDaysOutWeatherIcon =  function (threeDaysOutIcon){
 // START OF GET THREE-days-out WEATHER TEMP
 var getThreeDaysOutWeatherTemp = function (threeDaysOutTemp) {
     var threeDaysOutWeatherTemp = document.querySelector("#three-days-out-weather-temp");
-    $(threeDaysOutWeatherTemp).append(threeDaysOutTemp)
+    $(threeDaysOutWeatherTemp).empty();
+    $(threeDaysOutWeatherTemp).append("Temp: " + threeDaysOutTemp);
 }
 
 // START OF THREE-days-out WEATHER HUMIDITY
 var getThreeDaysOutWeatherHumidity = function (threeDaysOutHumidity){
     var threeDaysOutWeatherHumidity = document.querySelector("#three-days-out-weather-humidity");
-    $(threeDaysOutWeatherHumidity).append(threeDaysOutHumidity);
+    $(threeDaysOutWeatherHumidity).empty();
+    $(threeDaysOutWeatherHumidity).append("Humidity: " + threeDaysOutHumidity);
 }
 
 // START OF THREE-days-out WEATHER WIND SPEED
 var getThreeDaysOutWeatherWindSpeed = function (threeDaysOutWindSpeed) {
     var threeDaysOutWeatherWindSpeed = document.querySelector("#three-days-out-weather-wind-speed");
-    $(threeDaysOutWeatherWindSpeed).append(threeDaysOutWindSpeed);
+    $(threeDaysOutWeatherWindSpeed).empty();
+    $(threeDaysOutWeatherWindSpeed).append("Wind Speed: " + threeDaysOutWindSpeed);
 }
 
 
@@ -410,19 +421,22 @@ var getFourDaysOutWeatherIcon =  function (fourDaysOutIcon){
 // START OF GET FOUR-days-out WEATHER TEMP
 var getFourDaysOutWeatherTemp = function (fourDaysOutTemp) {
     var fourDaysOutWeatherTemp = document.querySelector("#four-days-out-weather-temp");
-    $(fourDaysOutWeatherTemp).append(fourDaysOutTemp)
+    $(fourDaysOutWeatherTemp).empty();
+    $(fourDaysOutWeatherTemp).append("Temp: " + fourDaysOutTemp);
 }
 
 // START OF FOUR-days-out WEATHER HUMIDITY
 var getFourDaysOutWeatherHumidity = function (fourDaysOutHumidity){
     var fourDaysOutWeatherHumidity = document.querySelector("#four-days-out-weather-humidity");
-    $(fourDaysOutWeatherHumidity).append(fourDaysOutHumidity);
+    $(fourDaysOutWeatherHumidity).empty();
+    $(fourDaysOutWeatherHumidity).append("Humidity: " + fourDaysOutHumidity);
 }
 
 // START OF FOUR-days-out WEATHER WIND SPEED
 var getFourDaysOutWeatherWindSpeed = function (fourDaysOutWindSpeed) {
     var fourDaysOutWeatherWindSpeed = document.querySelector("#four-days-out-weather-wind-speed");
-    $(fourDaysOutWeatherWindSpeed).append(fourDaysOutWindSpeed);
+    $(fourDaysOutWeatherWindSpeed).empty();
+    $(fourDaysOutWeatherWindSpeed).append("Wind Speed: " + fourDaysOutWindSpeed);
 }
 
 
@@ -450,19 +464,22 @@ var getFiveDaysOutWeatherIcon =  function (fiveDaysOutIcon){
 // START OF GET FIVE-days-out WEATHER TEMP
 var getFiveDaysOutWeatherTemp = function (fiveDaysOutTemp) {
     var fiveDaysOutWeatherTemp = document.querySelector("#five-days-out-weather-temp");
-    $(fiveDaysOutWeatherTemp).append(fiveDaysOutTemp)
+    $(fiveDaysOutWeatherTemp).empty();
+    $(fiveDaysOutWeatherTemp).append("Temp: " + fiveDaysOutTemp);
 }
 
 // START OF FIVE-days-out WEATHER HUMIDITY
 var getFiveDaysOutWeatherHumidity = function (fiveDaysOutHumidity){
     var fiveDaysOutWeatherHumidity = document.querySelector("#five-days-out-weather-humidity");
-    $(fiveDaysOutWeatherHumidity).append(fiveDaysOutHumidity);
+    $(fiveDaysOutWeatherHumidity).empty();
+    $(fiveDaysOutWeatherHumidity).append("Humidity: " + fiveDaysOutHumidity);
 }
 
 // START OF FIVE-days-out WEATHER WIND SPEED
 var getFiveDaysOutWeatherWindSpeed = function (fiveDaysOutWindSpeed) {
     var fiveDaysOutWeatherWindSpeed = document.querySelector("#five-days-out-weather-wind-speed");
-    $(fiveDaysOutWeatherWindSpeed).append(fiveDaysOutWindSpeed);
+    $(fiveDaysOutWeatherWindSpeed).empty();
+    $(fiveDaysOutWeatherWindSpeed).append("Wind Speed: " + fiveDaysOutWindSpeed);
 }
 
 
