@@ -86,10 +86,10 @@ var getCurrentCityName = function (currentCityName) {
 
 // START OF GET CURRENT WEATHER ICON
 var getCurrentWeatherIcon =  function (currentIcon){
-    var currentWeatherIcon = document.querySelector("#current-weather-icon");
-    $(currentWeatherIcon).addClass("currentIcon");
+    var iconUrl = "http://openweathermap.org/img/w/" + currentIcon + ".png";
+    var currentWeatherIcon = document.querySelector("#current-icon-image");
+    $(currentWeatherIcon).attr('src', iconUrl);
 }
-
 // END OF GET CURRENT WEATHER ICON
 
 
