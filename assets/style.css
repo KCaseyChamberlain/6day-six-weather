@@ -1,17 +1,30 @@
 *{
-    padding: 10px
+    padding: 7px;
+}
+
+body{
+    background-color: rgb(208, 138, 138);
 }
 
 header{
     border-bottom: dotted;
 }
 
+header p {
+    font-size: larger;
+    font-weight: 600;
+}
+
 #weather-block h3 {
-    background-color: gainsboro;
+    background-color: rgb(151, 130, 130);
+}
+
+.card{
+background-color: rgb(157, 230, 233);
 }
 
 .card-header{
-    background-color: #a7d3db;
+    background-color: #d1149c5f;
 }
 
 #search-block {
@@ -23,11 +36,11 @@ header{
 }
 
 .forecast-weather {
-    background-color: aqua;
+    background-color: rgb(4, 170, 170);
 }
 
 .current-weather {
-    background-color: aquamarine;
+    background-color: rgb(97, 226, 183);
     border-bottom: solid;
 }
 
@@ -36,12 +49,12 @@ header{
     border: dashed;
 }
 
-
-
-.forecast-block {
-    justify-content: space-evenly;
+/* HIDES WEATHER BLOCK ON PAGE LOAD */
+.visibility-hidden {
+    visibility: hidden;
 }
 
+/* HOVER BUTTONS */
 .search-history-button:hover {
     font-size: 115%;
     transition: all .3s ease-in-out;
@@ -52,17 +65,4 @@ header{
     font-size: 115%;
     transition: all .3s ease-in-out;
     opacity: .8;
-}
-
-.uv-fav {
-background-color: green;
-}
-
-
-.uv-mod {
-background-color: yellow;
-}
-
-.uv-sev {
-background-color: red;
 }

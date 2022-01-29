@@ -5,7 +5,7 @@ var pastCitySearch = []
 var city
 var searchHistoryList = document.querySelector("#search-history-list")
 var searchHistoryButton = document.querySelector(".search-history-button")
-
+var weatherBlockVis = document.querySelector(".visibility-hidden")
 
 // uses moment to get the current time and displays it in the header
 var currentTime = function () {
@@ -23,6 +23,9 @@ var formSubmitHandler = function (event) {
     city = cityInputEl.value.trim();
 
     if (city) {
+        // shows weather block when city is searched
+        $(weatherBlockVis).removeClass("visibility-hidden");
+
         getCurrentWeather(city);
         cityHistorySave(city);
         updateSearchHistoryList();
@@ -35,10 +38,7 @@ var formSubmitHandler = function (event) {
 };
 
 
-
-
-
-// START OF CURRENT WEATHER FUNCTION
+// START OF CURRENT API WEATHER FUNCTION
 var getCurrentWeather = function (city) {
 
     // format the openweathermap current api url
@@ -78,12 +78,11 @@ $.ajax({
     getCurrentWeatherWindSpeed(currentWindSpeed)
 })
 }
-// END OF CURRENT WEATHER FUNCTION
+// END OF CURRENT API WEATHER FUNCTION
 
 
 
-
-// START OF FORECAST WEATHER FUNCTION
+// START OF FORECAST API WEATHER FUNCTION
 var getForecastWeather = function (longitude, latitude) {
 
     // format the openweathermap forecast api url
@@ -118,9 +117,6 @@ $.ajax({
     getTomorrowWeatherWindSpeed(tomorrowWindSpeed)
 
 
-    
-
-
     // console.log(response.daily[1].weather[0].icon)
     var twoDaysOutIcon = response.daily[1].weather[0].icon;
     getTwoDaysOutWeatherIcon(twoDaysOutIcon)
@@ -136,9 +132,6 @@ $.ajax({
     // console.log(response.daily[1].wind_speed)
     var twoDaysOutWindSpeed = response.daily[1].wind_speed;
     getTwoDaysOutWeatherWindSpeed(twoDaysOutWindSpeed)
-
-
-
 
 
     // console.log(response.daily[2].weather[0].icon)
@@ -158,9 +151,6 @@ $.ajax({
     getThreeDaysOutWeatherWindSpeed(threeDaysOutWindSpeed)
 
 
-
-
-
     // console.log(response.daily[3].weather[0].icon)
     var fourDaysOutIcon = response.daily[3].weather[0].icon;
     getFourDaysOutWeatherIcon(fourDaysOutIcon)
@@ -178,9 +168,6 @@ $.ajax({
     getFourDaysOutWeatherWindSpeed(fourDaysOutWindSpeed)
 
 
-
-
-
     // console.log(response.daily[4].weather[0].icon)
     var fiveDaysOutIcon = response.daily[4].weather[0].icon;
     getFiveDaysOutWeatherIcon(fiveDaysOutIcon)
@@ -196,23 +183,16 @@ $.ajax({
     // console.log(response.daily[4].wind_speed)
     var fiveDaysOutWindSpeed = response.daily[4].wind_speed;
     getFiveDaysOutWeatherWindSpeed(fiveDaysOutWindSpeed)
-
-
-
 })
 }
-// END OF FORECAST WEATHER FUNCTION
-
-
-
-
-
+// END OF FORECAST API WEATHER FUNCTION
 
 
 // START OF GET CURRENT CITY NAME
 var getCurrentCityName = function (currentCityName) {
     var currentWeatherCityName = document.querySelector("#current-weather-city-name");
-    $(currentWeatherCityName).replaceWith(currentCityName);
+    $(currentWeatherCityName).empty();
+    $(currentWeatherCityName).append(currentCityName)
 }
 
 // START OF GET CURRENT WEATHER ICON
@@ -235,8 +215,6 @@ var getCurrentWeatherHumidity = function (currentHumidity){
     $(currentWeatherHumidity).empty();
     $(currentWeatherHumidity).append("Humidity: " + currentHumidity);
 }
-
-
 
 // START OF CURRENT WEATHER WIND SPEED
 var getCurrentWeatherWindSpeed = function (currentWindSpeed) {
@@ -262,19 +240,9 @@ var getCurrentWeatherUvi = function (currentUvi) {
         currentWeatherUvi.style.backgroundColor = "#f8ff78";
     }
 }
+// END OF CURRENT WEATHER BLOCK
 
-// END OF CURRENT WEATHER BLOCK!!!!
-
-
-
-
-
-
-
-
-
-
-// START OF TOMORROW WEATHER BLOCK!!!
+// START OF TOMORROW WEATHER BLOCK
 var tomorrowTime = function () {
     timeEL = document.querySelector('#tomorrow-weather-date')
     timeEL.innerHTML = moment().add(1, 'days').format('MMMM Do');
@@ -308,12 +276,6 @@ var getTomorrowWeatherWindSpeed = function (tomorrowWindSpeed) {
     $(tomorrowWeatherWindSpeed).empty();
     $(tomorrowWeatherWindSpeed).append("Wind Speed: " + tomorrowWindSpeed);}
 
-
-
-
-
-
-
 // START OF TWO-days-out WEATHER BLOCK!!!
 var twoDaysOutTime = function () {
     timeEL = document.querySelector("#two-days-out-weather-date")
@@ -321,14 +283,12 @@ var twoDaysOutTime = function () {
 }
 setInterval(twoDaysOutTime, 1000);
 
-
 // START OF GET TWO-days-out WEATHER ICON
 var getTwoDaysOutWeatherIcon =  function (twoDaysOutIcon){
     var twoDaysOutIconUrl = "http://openweathermap.org/img/w/" + twoDaysOutIcon + ".png";
     var twoDaysOutWeatherIcon = document.querySelector("#two-days-out-icon-image");
     $(twoDaysOutWeatherIcon).attr('src', twoDaysOutIconUrl);
 }
-
 
 // START OF GET TWO-days-out WEATHER TEMP
 var getTwoDaysOutWeatherTemp = function (twoDaysOutTemp) {
@@ -351,13 +311,6 @@ var getTwoDaysOutWeatherWindSpeed = function (twoDaysOutWindSpeed) {
     $(twoDaysOutWeatherWindSpeed).append("Wind Speed: " + twoDaysOutWindSpeed);
 }
 
-
-
-
-
-
-
-
 // START OF THREE-days-out WEATHER BLOCK!!!
 var threeDaysOutTime = function () {
     timeEL = document.querySelector("#three-days-out-weather-date")
@@ -365,14 +318,12 @@ var threeDaysOutTime = function () {
 }
 setInterval(threeDaysOutTime, 1000);
 
-
 // START OF GET THREE-days-out WEATHER ICON
 var getThreeDaysOutWeatherIcon =  function (threeDaysOutIcon){
     var threeDaysOutIconUrl = "http://openweathermap.org/img/w/" + threeDaysOutIcon + ".png";
     var threeDaysOutWeatherIcon = document.querySelector("#three-days-out-icon-image");
     $(threeDaysOutWeatherIcon).attr('src', threeDaysOutIconUrl);
 }
-
 
 // START OF GET THREE-days-out WEATHER TEMP
 var getThreeDaysOutWeatherTemp = function (threeDaysOutTemp) {
@@ -395,13 +346,6 @@ var getThreeDaysOutWeatherWindSpeed = function (threeDaysOutWindSpeed) {
     $(threeDaysOutWeatherWindSpeed).append("Wind Speed: " + threeDaysOutWindSpeed);
 }
 
-
-
-
-
-
-
-
 // START OF FOUR-days-out WEATHER BLOCK!!!
 var fourDaysOutTime = function () {
     timeEL = document.querySelector("#four-days-out-weather-date")
@@ -409,14 +353,12 @@ var fourDaysOutTime = function () {
 }
 setInterval(fourDaysOutTime, 1000);
 
-
 // START OF GET FOUR-days-out WEATHER ICON
 var getFourDaysOutWeatherIcon =  function (fourDaysOutIcon){
     var fourDaysOutIconUrl = "http://openweathermap.org/img/w/" + fourDaysOutIcon + ".png";
     var fourDaysOutWeatherIcon = document.querySelector("#four-days-out-icon-image");
     $(fourDaysOutWeatherIcon).attr('src', fourDaysOutIconUrl);
 }
-
 
 // START OF GET FOUR-days-out WEATHER TEMP
 var getFourDaysOutWeatherTemp = function (fourDaysOutTemp) {
@@ -439,12 +381,6 @@ var getFourDaysOutWeatherWindSpeed = function (fourDaysOutWindSpeed) {
     $(fourDaysOutWeatherWindSpeed).append("Wind Speed: " + fourDaysOutWindSpeed);
 }
 
-
-
-
-
-
-
 // START OF FIVE-days-out WEATHER BLOCK!!!
 var fiveDaysOutTime = function () {
     timeEL = document.querySelector("#five-days-out-weather-date")
@@ -452,14 +388,12 @@ var fiveDaysOutTime = function () {
 }
 setInterval(fiveDaysOutTime, 1000);
 
-
 // START OF GET FIVE-days-out WEATHER ICON
 var getFiveDaysOutWeatherIcon =  function (fiveDaysOutIcon){
     var fiveDaysOutIconUrl = "http://openweathermap.org/img/w/" + fiveDaysOutIcon + ".png";
     var fiveDaysOutWeatherIcon = document.querySelector("#five-days-out-icon-image");
     $(fiveDaysOutWeatherIcon).attr('src', fiveDaysOutIconUrl);
 }
-
 
 // START OF GET FIVE-days-out WEATHER TEMP
 var getFiveDaysOutWeatherTemp = function (fiveDaysOutTemp) {
@@ -482,31 +416,7 @@ var getFiveDaysOutWeatherWindSpeed = function (fiveDaysOutWindSpeed) {
     $(fiveDaysOutWeatherWindSpeed).append("Wind Speed: " + fiveDaysOutWindSpeed);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // START OF SET CITY HISTORY FUNCTION
-
 function cityHistorySave(city) {
     pastCitySearch.unshift({
         cityName: city,
@@ -535,7 +445,7 @@ function updateSearchHistoryList () {
     }
 }
 
-
+// START OF SEARCH HISTORY BUTTONS
 $(document).on("click", ".search-history-button", function () {
     console.log("click")
     city = $(this).text()
@@ -545,12 +455,7 @@ $(document).on("click", ".search-history-button", function () {
     updateSearchHistoryList();
 })
 
-
-
-
-
-
-// click event
+// CLICK EVENT
 userFormEl.addEventListener("submit", formSubmitHandler);
 
 
