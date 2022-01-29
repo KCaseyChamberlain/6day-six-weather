@@ -35,6 +35,9 @@ var formSubmitHandler = function (event) {
 };
 
 
+
+
+
 // START OF CURRENT WEATHER FUNCTION
 var getCurrentWeather = function (city) {
 
@@ -96,57 +99,103 @@ $.ajax({
     var currentUvi = response.current.uvi;
     getCurrentWeatherUvi(currentUvi)
 
+
+
+    console.log(response.daily[0].weather[0].icon)
+    var tomorrowIcon = response.daily[0].weather[0].icon;
+    getTomorrowWeatherIcon(tomorrowIcon)
+
+    console.log(response.daily[0].temp.day)
+    var tomorrowTemp = response.daily[0].temp.day;
+    getTomorrowWeatherTemp(tomorrowTemp)
+
+    console.log(response.daily[0].humidity)
+    var tomorrowHumidity = response.daily[0].humidity;
+    getTomorrowWeatherHumidity(tomorrowHumidity)
+
+    console.log(response.daily[0].wind_speed)
+    var tomorrowWindSpeed = response.daily[0].wind_speed;
+    getTomorrowWeatherWindSpeed(tomorrowWindSpeed)
+
+
+    
+
+
+    console.log(response.daily[1].weather[0].icon)
+    var twoDaysOutIcon = response.daily[1].weather[0].icon;
+    getTwoDaysOutWeatherIcon(twoDaysOutIcon)
+
+    console.log(response.daily[1].temp.day)
+    var twoDaysOutTemp = response.daily[1].temp.day;
+    getTwoDaysOutWeatherTemp(twoDaysOutTemp)
+
+    console.log(response.daily[1].humidity)
+    var twoDaysOutHumidity = response.daily[1].humidity;
+    getTwoDaysOutWeatherHumidity(twoDaysOutHumidity)
+
+    console.log(response.daily[1].wind_speed)
+    var twoDaysOutWindSpeed = response.daily[1].wind_speed;
+    getTwoDaysOutWeatherWindSpeed(twoDaysOutWindSpeed)
 })
 }
 // END OF FORECAST WEATHER FUNCTION
+
+
+
+
+
+
 
 // START OF GET CURRENT CITY NAME
 var getCurrentCityName = function (currentCityName) {
     var currentWeatherCityName = document.querySelector("#current-weather-city-name");
     $(currentWeatherCityName).replaceWith(currentCityName);
 }
-// END OF GET CURRENT CITY NAME
 
 // START OF GET CURRENT WEATHER ICON
 var getCurrentWeatherIcon =  function (currentIcon){
-    var iconUrl = "http://openweathermap.org/img/w/" + currentIcon + ".png";
+    var currentIconUrl = "http://openweathermap.org/img/w/" + currentIcon + ".png";
     var currentWeatherIcon = document.querySelector("#current-icon-image");
-    $(currentWeatherIcon).attr('src', iconUrl);
+    $(currentWeatherIcon).attr('src', currentIconUrl);
 }
-// END OF GET CURRENT WEATHER ICON
 
 // START OF GET CURRENT WEATHER TEMP
 var getCurrentWeatherTemp = function (currentTemp) {
     var currentWeatherTemp = document.querySelector("#current-weather-temp");
     $(currentWeatherTemp).append(currentTemp)
 }
-// END OF GET CURRENT WEATHER TEMP
 
 // START OF CURRENT WEATHER HUMIDITY
 var getCurrentWeatherHumidity = function (currentHumidity){
     var currentWeatherHumidity = document.querySelector("#current-weather-humidity");
-    currentWeatherHumidity.innerHTML = ""
+    // currentWeatherHumidity.innerHTML = ""
     $(currentWeatherHumidity).append(currentHumidity);
 }
 
 
-// END OF CURRENT WEATHER HUMIDITY
 
 // START OF CURRENT WEATHER WIND SPEED
 var getCurrentWeatherWindSpeed = function (currentWindSpeed) {
     var currentWeatherWindSpeed = document.querySelector("#current-weather-wind-speed");
     $(currentWeatherWindSpeed).append(currentWindSpeed);
 }
-// END OF CURRENT WEATHER WIND SPEED
 
 // START OF CURRENT UVI
 var getCurrentWeatherUvi = function (currentUvi) {
     var currentWeatherUvi = document.querySelector("#current-weather-uvi");
     $(currentWeatherUvi).append(currentUvi);
 }
-// END OF CURRENT UVI
 
 // END OF CURRENT WEATHER BLOCK!!!!
+
+
+
+
+
+
+
+
+
 
 // START OF TOMORROW WEATHER BLOCK!!!
 var tomorrowTime = function () {
@@ -155,7 +204,71 @@ var tomorrowTime = function () {
 }
 setInterval(tomorrowTime, 1000);
 
+// START OF GET TOMORROW WEATHER ICON
+var getTomorrowWeatherIcon =  function (tomorrowIcon){
+    var tomorrowIconUrl = "http://openweathermap.org/img/w/" + tomorrowIcon + ".png";
+    var tomorrowWeatherIcon = document.querySelector("#tomorrow-icon-image");
+    $(tomorrowWeatherIcon).attr('src', tomorrowIconUrl);
+}
 
+
+// START OF GET TOMORROW WEATHER TEMP
+var getTomorrowWeatherTemp = function (tomorrowTemp) {
+    var tomorrowWeatherTemp = document.querySelector("#tomorrow-weather-temp");
+    $(tomorrowWeatherTemp).append(tomorrowTemp)
+}
+
+// START OF TOMORROW WEATHER HUMIDITY
+var getTomorrowWeatherHumidity = function (tomorrowHumidity){
+    var tomorrowWeatherHumidity = document.querySelector("#tomorrow-weather-humidity");
+    $(tomorrowWeatherHumidity).append(tomorrowHumidity);
+}
+
+// START OF TOMORROW WEATHER WIND SPEED
+var getTomorrowWeatherWindSpeed = function (tomorrowWindSpeed) {
+    var tomorrowWeatherWindSpeed = document.querySelector("#tomorrow-weather-wind-speed");
+    $(tomorrowWeatherWindSpeed).append(tomorrowWindSpeed);
+}
+
+
+
+
+
+
+
+// START OF two-days-out WEATHER BLOCK!!!
+var TwoDaysOutTime = function () {
+    timeEL = document.querySelector("#two-days-out-weather-date")
+    timeEL.innerHTML = moment().add(2, 'days').format('MMMM Do');
+}
+setInterval(TwoDaysOutTime, 1000);
+
+
+// START OF GET TOMORROW WEATHER ICON
+var getTwoDaysOutWeatherIcon =  function (twoDaysOutIcon){
+    var twoDaysOutIconUrl = "http://openweathermap.org/img/w/" + twoDaysOutIcon + ".png";
+    var twoDaysOutWeatherIcon = document.querySelector("#two-days-out-icon-image");
+    $(twoDaysOutWeatherIcon).attr('src', twoDaysOutIconUrl);
+}
+
+
+// START OF GET TOMORROW WEATHER TEMP
+var getTwoDaysOutWeatherTemp = function (twoDaysOutTemp) {
+    var twoDaysOutWeatherTemp = document.querySelector("#two-days-out-weather-temp");
+    $(twoDaysOutWeatherTemp).append(twoDaysOutTemp)
+}
+
+// START OF TOMORROW WEATHER HUMIDITY
+var getTwoDaysOutWeatherHumidity = function (twoDaysOutHumidity){
+    var twoDaysOutWeatherHumidity = document.querySelector("#two-days-out-weather-humidity");
+    $(twoDaysOutWeatherHumidity).append(twoDaysOutHumidity);
+}
+
+// START OF TOMORROW WEATHER WIND SPEED
+var getTwoDaysOutWeatherWindSpeed = function (twoDaysOutWindSpeed) {
+    var twoDaysOutWeatherWindSpeed = document.querySelector("#two-days-out-weather-wind-speed");
+    $(twoDaysOutWeatherWindSpeed).append(twoDaysOutWindSpeed);
+}
 
 
 
