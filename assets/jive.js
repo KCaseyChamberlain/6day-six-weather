@@ -427,7 +427,6 @@ function cityHistorySave(city) {
 // START OF GET CITY HISTORY
 function getCityHistory () {
     var loadCityHistory = JSON.parse(localStorage.getItem("History"))
-    console.log(loadCityHistory)
     return loadCityHistory
 }
 
@@ -438,7 +437,6 @@ function updateSearchHistoryList () {
     for (i = 0; i < history.length; i++) {
         var button = document.createElement("button")
         button.classList.add("search-history-button")
-        console.log(history[i].cityName)
         var buttonContent = history[i].cityName.toString()
         button.innerHTML = buttonContent
         searchHistoryList.append(button)
