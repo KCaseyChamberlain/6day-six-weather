@@ -15,12 +15,13 @@ header p {
     font-weight: 600;
 }
 
-#weather-block h3 {
-    background-color: rgb(151, 130, 130);
+.form-label{
+    font-size: large;
+    font-weight: bolder;
 }
 
 .card{
-background-color: rgb(157, 230, 233);
+    background-color: rgb(157, 230, 233);
 }
 
 .card-header{
@@ -33,6 +34,10 @@ background-color: rgb(157, 230, 233);
 
 .btn {
     background-color: grey;
+}
+
+#weather-block h3 {
+    background-color: rgb(151, 130, 130);
 }
 
 .forecast-weather {
