@@ -32,7 +32,7 @@ var getCurrentWeather = function (city) {
 
     // format the openweathermap current api url
     
-    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=1943adda1f7996b352d3f817945f8c54";
+    var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=1943adda1f7996b352d3f817945f8c54";
     console.log(apiURL);
 
 $.ajax({
@@ -48,6 +48,22 @@ $.ajax({
     console.log(response.name)
     var currentCityName = response.name;
     getCurrentCityName(currentCityName)
+
+    console.log(response.weather[0].icon)
+    var currentIcon = response.weather[0].icon;
+    getCurrentWeatherIcon(currentIcon)
+
+    console.log(response.main.temp)
+    var currentTemp = response.main.temp;
+    getCurrentWeatherTemp(currentTemp)
+
+    console.log(response.main.humidity)
+    var currentHumidity = response.main.humidity;
+    getCurrentWeatherHumidity(currentHumidity)
+
+    console.log(response.wind.speed)
+    var currentWindSpeed = response.wind.speed;
+    getCurrentWeatherWindSpeed(currentWindSpeed)
 })
 }
 // END OF CURRENT WEATHER FUNCTION
@@ -59,7 +75,7 @@ $.ajax({
 var getForecastWeather = function (longitude, latitude) {
 
     // format the openweathermap forecast api url
-    var apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=minutely,hourly,&appid=1943adda1f7996b352d3f817945f8c54";
+    var apiURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=minutely,hourly,&units=imperial&appid=1943adda1f7996b352d3f817945f8c54";
     console.log(apiURL);
 
 $.ajax({
@@ -68,14 +84,13 @@ $.ajax({
 }).then(function (response){
     console.log(response)
 
-    console.log(response.daily[0].weather[0].icon)
-    var currentIcon = response.daily[0].weather[0].icon;
-    getCurrentWeatherIcon(currentIcon)
+    console.log(response.current.uvi)
+    var currentUvi = response.current.uvi;
+    getCurrentWeatherUvi(currentUvi)
+
 })
 }
 // END OF FORECAST WEATHER FUNCTION
-
-
 
 // START OF GET CURRENT CITY NAME
 var getCurrentCityName = function (currentCityName) {
@@ -92,7 +107,39 @@ var getCurrentWeatherIcon =  function (currentIcon){
 }
 // END OF GET CURRENT WEATHER ICON
 
+// START OF GET CURRENT WEATHER TEMP
+var getCurrentWeatherTemp = function (currentTemp) {
+    var currentWeatherTemp = document.querySelector("#current-weather-temp");
+    $(currentWeatherTemp).append(currentTemp)
+}
+// END OF GET CURRENT WEATHER TEMP
 
+// START OF CURRENT WEATHER HUMIDITY
+var getCurrentWeatherHumidity = function (currentHumidity){
+    var currentWeatherHumidity = document.querySelector("#current-weather-humidity");
+    $(currentWeatherHumidity).append(currentHumidity);
+}
+
+
+// END OF CURRENT WEATHER HUMIDITY
+
+// START OF CURRENT WEATHER WIND SPEED
+var getCurrentWeatherWindSpeed = function (currentWindSpeed) {
+    var currentWeatherWindSpeed = document.querySelector("#current-weather-wind-speed");
+    $(currentWeatherWindSpeed).append(currentWindSpeed);
+}
+// END OF CURRENT WEATHER WIND SPEED
+
+// START OF CURRENT UVI
+var getCurrentWeatherUvi = function (currentUvi) {
+    var currentWeatherUvi = document.querySelector("#current-weather-uvi");
+    $(currentWeatherUvi).append(currentUvi);
+}
+// END OF CURRENT UVI
+
+// END OF CURRENT WEATHER BLOCK!!!!
+
+// START OF TOMORROW WEATHER BLOCK!!!
 
 
 
