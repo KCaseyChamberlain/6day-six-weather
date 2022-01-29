@@ -45,3 +45,16 @@ header{
     transition: all .3s ease-in-out;
     opacity: .8;
 }
+
+.uv-fav {
+background-color: green;
+}
+
+
+.uv-mod {
+background-color: yellow;
+}
+
+.uv-sev {
+background-color: red;
+}
