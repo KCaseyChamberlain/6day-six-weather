@@ -1,5 +1,11 @@
+var searchHistoryButton
 var userFormEl = document.querySelector("#user-form");
 var cityInputEl = document.querySelector("#city");
+var pastCitySearch = []
+var city
+var searchHistoryList = document.querySelector("#search-history-list")
+var searchHistoryButton = document.querySelector(".search-history-button")
+
 
 // uses moment to get the current time and displays it in the header
 var currentTime = function () {
@@ -14,10 +20,12 @@ var formSubmitHandler = function (event) {
     event.preventDefault();
 
     // get value from input element
-    var city = cityInputEl.value.trim();
+    city = cityInputEl.value.trim();
 
     if (city) {
         getCurrentWeather(city);
+        cityHistorySave(city);
+        updateSearchHistoryList();
 
         // clear old content
         cityInputEl.value = "";
@@ -117,6 +125,7 @@ var getCurrentWeatherTemp = function (currentTemp) {
 // START OF CURRENT WEATHER HUMIDITY
 var getCurrentWeatherHumidity = function (currentHumidity){
     var currentWeatherHumidity = document.querySelector("#current-weather-humidity");
+    currentWeatherHumidity.innerHTML = ""
     $(currentWeatherHumidity).append(currentHumidity);
 }
 
@@ -140,6 +149,11 @@ var getCurrentWeatherUvi = function (currentUvi) {
 // END OF CURRENT WEATHER BLOCK!!!!
 
 // START OF TOMORROW WEATHER BLOCK!!!
+var tomorrowTime = function () {
+    timeEL = document.querySelector('#tomorrow-weather-date')
+    timeEL.innerHTML = moment().add(1, 'days').format('MMMM Do');
+}
+setInterval(tomorrowTime, 1000);
 
 
 
@@ -148,6 +162,51 @@ var getCurrentWeatherUvi = function (currentUvi) {
 
 
 
+
+
+
+
+
+
+// START OF SET CITY HISTORY FUNCTION
+
+function cityHistorySave(city) {
+    pastCitySearch.unshift({
+        cityName: city,
+    })
+    localStorage.setItem("History", JSON.stringify(pastCitySearch))
+}
+
+// START OF GET CITY HISTORY
+function getCityHistory () {
+    var loadCityHistory = JSON.parse(localStorage.getItem("History"))
+    console.log(loadCityHistory)
+    return loadCityHistory
+}
+
+// START OF SEARCH HISTORY BUTTONS FUNCTION
+function updateSearchHistoryList () {
+    searchHistoryList.innerHTML = ""
+    var history = getCityHistory()
+    for (i = 0; i < history.length; i++) {
+        var button = document.createElement("button")
+        button.classList.add("search-history-button")
+        console.log(history[i].cityName)
+        var buttonContent = history[i].cityName.toString()
+        button.innerHTML = buttonContent
+        searchHistoryList.append(button)
+    }
+}
+
+
+$(document).on("click", ".search-history-button", function () {
+    console.log("click")
+    city = $(this).text()
+    console.log(city)
+    getCurrentWeather(city);
+    cityHistorySave(city);
+    updateSearchHistoryList();
+})
 
 
 
@@ -156,7 +215,6 @@ var getCurrentWeatherUvi = function (currentUvi) {
 
 // click event
 userFormEl.addEventListener("submit", formSubmitHandler);
-
 
 
 
