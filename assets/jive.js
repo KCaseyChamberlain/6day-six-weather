@@ -71,6 +71,7 @@ $.ajax({
     // console.log(response.main.humidity)
     var currentHumidity = response.main.humidity;
     getCurrentWeatherHumidity(currentHumidity)
+    
 
     // console.log(response.wind.speed)
     var currentWindSpeed = response.wind.speed;
@@ -230,7 +231,6 @@ var getCurrentWeatherTemp = function (currentTemp) {
 // START OF CURRENT WEATHER HUMIDITY
 var getCurrentWeatherHumidity = function (currentHumidity){
     var currentWeatherHumidity = document.querySelector("#current-weather-humidity");
-    // currentWeatherHumidity.innerHTML = ""
     $(currentWeatherHumidity).append(currentHumidity);
 }
 
@@ -247,15 +247,15 @@ var getCurrentWeatherUvi = function (currentUvi) {
     var currentWeatherUvi = document.querySelector("#current-weather-uvi");
     $(currentWeatherUvi).append(currentUvi);
     if (currentUvi < 3) {
-        $(this).addClass("uv-fav");
+        currentWeatherUvi.style.backgroundColor = "#1db546";
     }
 
     else if (currentUvi > 6) {
-        $(this).addClass("uv-sev");
+        currentWeatherUvi.style.backgroundColor = "#fa4848";
     }
 
     else {
-        $(this).addClass("uv-mod");
+        currentWeatherUvi.style.backgroundColor = "#f8ff78";
     }
 }
 

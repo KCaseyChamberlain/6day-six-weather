@@ -32,12 +32,20 @@ header{
 }
 
 .forecast-days {
-    background-color: #a7d3db;
+    background-color: #6ca1aa;
     border: dashed;
 }
 
+
+
 .forecast-block {
     justify-content: space-evenly;
+}
+
+.search-history-button:hover {
+    font-size: 115%;
+    transition: all .3s ease-in-out;
+    opacity: .8;
 }
 
 .btn:hover{
