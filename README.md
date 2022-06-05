@@ -1,6 +1,6 @@
 # 6day-Six-Weather
 
-6day-six-weather would like to help the user keep their future organized and on track. They offer this 6 day weather application to help keep the user in touch with the current and future weather.
+This front-end web application makes use of a third party weather API. The user will be able to search for the weather by city. The application will provide the current weather for the city, as well as a 5 day forecast. The cities entered will be remembered and can be reused through a search history feature.
 
 ## 6day-Six-Weather Offers:
 
